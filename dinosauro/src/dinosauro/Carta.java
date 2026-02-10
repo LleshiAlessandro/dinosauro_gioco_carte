@@ -35,6 +35,10 @@ public class Carta {
     public Colore getColore() {
         return colore;
     }
+
+    public void setPunteggio(int punteggio) {
+        this.punteggio = punteggio;
+    }
     
     
 }

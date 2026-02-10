@@ -20,5 +20,23 @@ public class Mazzo {
         }
     }
     
+    //calcola punti
+    public int calcolaPunti(){
+        int punt = 0;
+        for(Carta c :carte){
+            punt += c.getPunteggio();
+        }
+        return punt;
+    }
     
+    public void addCard(Carta c){
+        carte.add(c);
+    }
+    public void removeCard(Carta c){
+        carte.remove(c);
+    }
+    
+    public Carta pescaPrimaCarta(){
+        
+    }
 }

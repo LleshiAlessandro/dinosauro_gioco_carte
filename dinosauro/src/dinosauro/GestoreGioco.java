@@ -9,5 +9,9 @@ package dinosauro;
  * @author lleshi.alessandro
  */
 public class GestoreGioco {
+    private Giocatore g1;
+    private Giocatore g2;
+    private Mazzo mazzo;
+    
     
 }
