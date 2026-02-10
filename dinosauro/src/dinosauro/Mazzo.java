@@ -1,0 +1,24 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package dinosauro;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author lleshi.alessandro
+ */
+public class Mazzo {
+    private ArrayList<Carta> carte = new ArrayList();
+
+    public Mazzo(ArrayList<String> e) {
+        for(String a : e){
+            Carta c = new Carta(a);
+            carte.add(c);
+        }
+    }
+    
+    
+}
