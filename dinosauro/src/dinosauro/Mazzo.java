@@ -37,6 +37,6 @@ public class Mazzo {
     }
     
     public Carta pescaPrimaCarta(){
-        
+        return carte.removeFirst();
     }
 }

@@ -20,5 +20,15 @@ public class Giocatore {
         punteggio = m2;
     }
     
+    public void pescaCarta(Carta c){
+        mano.addCard(c);        
+    }
     
+    public int calcolaPunti(){
+        return punteggio.calcolaPunti();
+    }
+    
+    public Carta giocaCarta(){
+        return mano.pescaPrimaCarta();
+    }
 }
