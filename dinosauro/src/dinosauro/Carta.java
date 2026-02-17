@@ -40,5 +40,8 @@ public class Carta {
         this.punteggio = punteggio;
     }
     
-    
+    @Override
+    public String toString() {
+        return colore.toString();
+    }
 }

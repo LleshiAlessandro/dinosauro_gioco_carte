@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author lleshi.alessandro
  */
 public class Mazzo {
-    private ArrayList<Carta> carte = new ArrayList();
+    ArrayList<Carta> carte = new ArrayList();
 
     public Mazzo(ArrayList<String> e) {
         for(String a : e){
@@ -37,6 +37,6 @@ public class Mazzo {
     }
     
     public Carta pescaPrimaCarta(){
-        return carte.removeFirst();
+        return carte.remove(0);
     }
 }

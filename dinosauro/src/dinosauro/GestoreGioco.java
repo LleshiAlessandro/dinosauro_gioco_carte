@@ -4,6 +4,8 @@
  */
 package dinosauro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lleshi.alessandro
@@ -13,9 +15,31 @@ public class GestoreGioco {
     private Giocatore g2;
     private Mazzo mazzo;
     
+    
     public void giocaCarta(){
         g1.giocaCarta();
         g2.giocaCarta();
+    }
+    
+    public void daiMazzo(){
+        int x=0;
+        Mazzo m1;
+        Mazzo m2;
+        ArrayList<String> c1 = new ArrayList();
+        ArrayList<String> c2 = new ArrayList();
+        
+        for(Carta c: mazzo.carte){
+            String ca = c.toString();
+            if(x%2 == 0){
+                c2.add(ca);
+            }
+            else{
+                c1.add(ca);
+            }
+            x++;
+        }
+        g1 = new Giocatore(m1=new Mazzo(c1));
+        g2 = new Giocatore(m2=new Mazzo(c2));
     }
     
     public void contaPunti(){
