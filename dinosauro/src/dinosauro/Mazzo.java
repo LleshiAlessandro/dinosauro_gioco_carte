@@ -39,4 +39,6 @@ public class Mazzo {
     public Carta pescaPrimaCarta(){
         return carte.remove(0);
     }
+ 
+    //serve un get carta
 }

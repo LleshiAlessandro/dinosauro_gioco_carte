@@ -63,7 +63,7 @@ public class GestoreGioco {
     
     //mi dice quando i 2 giocatori giocano la loro mano chi vince
     public void manoVincente(){
-        
+        // serve fare un controllo del colore delle carte per capire (grazie all enum) quale prevale sull'altra
     }
     
     public void out(){
