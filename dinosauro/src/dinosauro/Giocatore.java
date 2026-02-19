@@ -9,8 +9,8 @@ package dinosauro;
  * @author lleshi.alessandro
  */
 public class Giocatore {
-    private Mazzo mano;
-    private Mazzo punteggio;
+    protected Mazzo mano;
+    protected Mazzo punteggio;
 
     
     //m1 e m2 sono i 2 mazzi che passo quando costuisco il giocatore ovvero il numero di carte che ha in mano

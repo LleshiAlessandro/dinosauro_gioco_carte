@@ -14,6 +14,7 @@ public class GestoreGioco {
     private Giocatore g1;
     private Giocatore g2;
     private Mazzo mazzo;
+    private Mazzo mazzoCentrale;
     
     
     public void giocaCarta(){
@@ -63,7 +64,40 @@ public class GestoreGioco {
     
     //mi dice quando i 2 giocatori giocano la loro mano chi vince
     public void manoVincente(){
-        // serve fare un controllo del colore delle carte per capire (grazie all enum) quale prevale sull'altra
+        // devo fare in modo di mettere tutte le carte giocate nel mazzo centrale e poi controllare se qualcuno ha vinto, in caso si aggiungo le carte al vincente
+        Carta c1 = g1.mano.pescaPrimaCarta();
+        Carta c2 = g2.mano.pescaPrimaCarta();
+        mazzoCentrale.addCard(c1);
+        mazzoCentrale.addCard(c2);
+       if(c1.getColore().equals("Rosso") && c2.getColore().equals("Giallo")){
+           // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
+            g1.punteggio.addCard(c1);
+            g1.punteggio.addCard(c2);
+           
+       }
+       else if(c1.getColore().equals("Giallo") && c2.getColore().equals("Rosso")){
+           // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
+           g2.punteggio.addCard(c1);
+           g2.punteggio.addCard(c2);
+       }
+       else if (c1.getColore().equals("Giallo") && c2.getColore().equals("Verde")){
+           // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
+           g1.punteggio.addCard(c1);
+           g1.punteggio.addCard(c2);
+       }
+       else if(c1.getColore().equals("Verde") && c2.getColore().equals("Giallo")){
+           // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
+           g2.punteggio.addCard(c1);
+           g2.punteggio.addCard(c2);
+       }
+       else{
+            if(c1.getColore() == c2.getColore()){
+                mazzoCentrale.addCard(c1);
+                mazzoCentrale.addCard(c2);
+            }
+       }
+            
+        
     }
     
     public void out(){
