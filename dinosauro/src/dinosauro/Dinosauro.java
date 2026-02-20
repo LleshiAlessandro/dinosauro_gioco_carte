@@ -14,8 +14,9 @@ public class Dinosauro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        GestoreGioco g = new GestoreGioco();
         
-        
+        System.out.println(g.toString());
         
     }
     

@@ -15,6 +15,9 @@ public class GestoreGioco {
     private Giocatore g2;
     private Mazzo mazzo;
     private Mazzo mazzoCentrale;
+    FileManager f= new FileManager();
+    private ArrayList<Carta> carte = new ArrayList();
+
     
     
     public void giocaCarta(){
@@ -43,15 +46,15 @@ public class GestoreGioco {
         g2 = new Giocatore(m2=new Mazzo(c2));
     }
     
-    public void contaPunti(){
+    public String contaPunti(){
         if(g1.calcolaPunti() > g2.calcolaPunti()){
-            System.out.println(" il primo giocatore ha vinto");
+            return " il primo giocatore ha vinto";
         }
         else if(g1.calcolaPunti() < g2.calcolaPunti()){
-            System.out.println(" il secondo giocatore ha vinto");
+            return " il secondo giocatore ha vinto";
         }
         else{
-            System.out.println(" il primo giocatore e il secondo giocatore hanno pareggiato");
+            return " il primo giocatore e il secondo giocatore hanno pareggiato";
         }
     }
     
@@ -62,33 +65,45 @@ public class GestoreGioco {
         mazzo.addCard(c);
     }
     
+    // mi serve per convertire il mazzo centrale da mazzo ad array list di carta
+    public ArrayList<Carta> carteMazzoCentrale(){
+        for(Carta c: mazzoCentrale.carte){
+            carte.add(c);
+        }
+        return carte;
+    }
+    
     //mi dice quando i 2 giocatori giocano la loro mano chi vince
     public void manoVincente(){
-        // devo fare in modo di mettere tutte le carte giocate nel mazzo centrale e poi controllare se qualcuno ha vinto, in caso si aggiungo le carte al vincente
+        //devo fare in modo di mettere tutte le carte giocate nel mazzo centrale e poi controllare se qualcuno ha vinto, in caso si aggiungo le carte al vincente
         Carta c1 = g1.mano.pescaPrimaCarta();
         Carta c2 = g2.mano.pescaPrimaCarta();
         mazzoCentrale.addCard(c1);
         mazzoCentrale.addCard(c2);
+        
        if(c1.getColore().equals("Rosso") && c2.getColore().equals("Giallo")){
-           // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
-            g1.punteggio.addCard(c1);
-            g1.punteggio.addCard(c2);
-           
+           //un idea possibile sarebbe fare un metodo che mi controlla il colore della carta e che poi mi returna un giocatore, così facendo poi su questo metodo aggiungo al giocatore (che mi returna il metodo) tutte le carte del mazzo centrale
+           for(Carta c : this.carteMazzoCentrale()){
+               g1.punteggio.addCard(c);
+           }
        }
        else if(c1.getColore().equals("Giallo") && c2.getColore().equals("Rosso")){
            // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
-           g2.punteggio.addCard(c1);
-           g2.punteggio.addCard(c2);
+           for(Carta c : this.carteMazzoCentrale()){
+               g2.punteggio.addCard(c);
+           }
        }
        else if (c1.getColore().equals("Giallo") && c2.getColore().equals("Verde")){
            // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
-           g1.punteggio.addCard(c1);
-           g1.punteggio.addCard(c2);
+           for(Carta c : this.carteMazzoCentrale()){
+               g1.punteggio.addCard(c);
+           }
        }
        else if(c1.getColore().equals("Verde") && c2.getColore().equals("Giallo")){
            // non è giusto perché aggiungo solo le carte della mano e non quelle del mazzo centrale
-           g2.punteggio.addCard(c1);
-           g2.punteggio.addCard(c2);
+           for(Carta c : this.carteMazzoCentrale()){
+               g2.punteggio.addCard(c);
+           }
        }
        else{
             if(c1.getColore() == c2.getColore()){
@@ -100,8 +115,28 @@ public class GestoreGioco {
         
     }
     
+    
+    public void start(){
+        f.readerFile();
+        this.daiMazzo();
+        g1.giocaCarta();
+        g2.giocaCarta();
+        this.carteMazzoCentrale();
+        this.manoVincente();
+        g1.punteggio.calcolaPunti();
+        g2.punteggio.calcolaPunti();
+        this.contaPunti();
+    }
+    
     public void out(){
         System.out.println(" giocatore 1 " + g1 + " giocatore 2 " + g2 + " il mazzo: " + mazzo);
     }
-        
+        @Override
+        public String toString(){
+            return "giocatore 1: " + g1 + "\n" +
+                   "giocatore 2: " + g2 + "\n" +
+                   "il punteggio del giocatore 1 e': " + g1.punteggio.calcolaPunti()+ "\n" +
+                   "il punteggio del giocatore 2 e': " + g1.punteggio.calcolaPunti() + "\n" +
+                    "il vioncitore della partita e': " + this.contaPunti();
+        }
 }
