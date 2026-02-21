@@ -11,11 +11,12 @@ import java.util.ArrayList;
  * @author lleshi.alessandro
  */
 public class GestoreGioco {
+    FileManager f= new FileManager();
     private Giocatore g1;
     private Giocatore g2;
-    private Mazzo mazzo;
-    private Mazzo mazzoCentrale;
-    FileManager f= new FileManager();
+    private Mazzo mazzo = f.readerFile();
+    private Mazzo mazzoCentrale = new Mazzo(new ArrayList());
+
     private ArrayList<Carta> carte = new ArrayList();
 
     
@@ -35,10 +36,10 @@ public class GestoreGioco {
         for(Carta c: mazzo.carte){
             String ca = c.toString();
             if(x%2 == 0){
-                c2.add(ca);
+                c1.add(ca);
             }
             else{
-                c1.add(ca);
+                c2.add(ca);
             }
             x++;
         }
@@ -116,17 +117,7 @@ public class GestoreGioco {
     }
     
     
-    public void start(){
-        f.readerFile();
-        this.daiMazzo();
-        g1.giocaCarta();
-        g2.giocaCarta();
-        this.carteMazzoCentrale();
-        this.manoVincente();
-        g1.punteggio.calcolaPunti();
-        g2.punteggio.calcolaPunti();
-        this.contaPunti();
-    }
+
     
     public void out(){
         System.out.println(" giocatore 1 " + g1 + " giocatore 2 " + g2 + " il mazzo: " + mazzo);
@@ -139,4 +130,15 @@ public class GestoreGioco {
                    "il punteggio del giocatore 2 e': " + g1.punteggio.calcolaPunti() + "\n" +
                     "il vioncitore della partita e': " + this.contaPunti();
         }
+    public void start(){
+        mazzo = f.readerFile();
+        this.daiMazzo();
+        g1.giocaCarta();
+        g2.giocaCarta();
+        this.carteMazzoCentrale();
+        this.manoVincente();
+        g1.punteggio.calcolaPunti();
+        g2.punteggio.calcolaPunti();
+        this.contaPunti();
+    }
 }

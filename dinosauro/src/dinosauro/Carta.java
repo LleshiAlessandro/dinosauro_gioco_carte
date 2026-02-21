@@ -13,15 +13,17 @@ public class Carta {
     private Colore colore;
 
     public Carta(String c) {
-        colore = Colore.valueOf(c);
-        if(colore.equals("Rosso")){
+        if(c.equals("Rosso")){
             punteggio = 5;
+            colore = Colore.Rosso;
         }
-        else if (colore.equals("Verde")){
+        else if (c.equals("Verde")){
             punteggio = 3;
+            colore = Colore.Verde;
         }
-        else if (colore.equals("Giallo")){
+        else if (c.equals("Giallo")){
             punteggio = 1;
+            colore = Colore.Giallo;
         }
         else{
             System.out.println(" impossibile se non ritorna un valore piango ");

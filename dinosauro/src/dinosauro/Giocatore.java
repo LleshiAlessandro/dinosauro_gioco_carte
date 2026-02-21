@@ -4,13 +4,15 @@
  */
 package dinosauro;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lleshi.alessandro
  */
 public class Giocatore {
     protected Mazzo mano;
-    protected Mazzo punteggio;
+    protected Mazzo punteggio = new Mazzo(new ArrayList());
 
     
     //m1 e m2 sono i 2 mazzi che passo quando costuisco il giocatore ovvero il numero di carte che ha in mano
@@ -28,6 +30,11 @@ public class Giocatore {
     }
     
     public Carta giocaCarta(){
+        
         return mano.pescaPrimaCarta();
+    }
+    @Override
+    public String toString(){
+        return "la mano del giocatore e': " + mano + " il punteggio del giocatore e': " + punteggio;
     }
 }

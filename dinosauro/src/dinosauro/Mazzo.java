@@ -39,4 +39,8 @@ public class Mazzo {
     public Carta pescaPrimaCarta(){
         return carte.remove(0);
     }
+    @Override
+    public String toString(){
+        return "le carte del mazzo sono: " + carte;
+    }
 }
