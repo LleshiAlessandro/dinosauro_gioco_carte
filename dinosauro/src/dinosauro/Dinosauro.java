@@ -14,10 +14,11 @@ public class Dinosauro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GestoreGioco g = new GestoreGioco();
+        /*GestoreGioco g = new GestoreGioco();
         g.start();
         
         System.out.println(g);
+        */
         DinoForm d = new DinoForm();
         d.setVisible(true);
     }
