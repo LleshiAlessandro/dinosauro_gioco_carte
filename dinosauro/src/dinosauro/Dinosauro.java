@@ -16,8 +16,10 @@ public class Dinosauro {
     public static void main(String[] args) {
         GestoreGioco g = new GestoreGioco();
         g.start();
-        System.out.println(g);
         
+        System.out.println(g);
+        DinoForm d = new DinoForm();
+        d.setVisible(true);
     }
     
 }
