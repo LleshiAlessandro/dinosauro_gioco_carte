@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class GestoreGioco {
     FileManager f= new FileManager();
-    private Giocatore g1;
-    private Giocatore g2;
-    private Mazzo mazzo = f.readerFile();
-    private Mazzo mazzoCentrale = new Mazzo(new ArrayList());
+    protected Giocatore g1;
+    protected Giocatore g2;
+    protected Mazzo mazzo = f.readerFile();
+    protected Mazzo mazzoCentrale = new Mazzo(new ArrayList());
     
     
     public void giocaCarta(){
@@ -46,7 +46,7 @@ public class GestoreGioco {
         g2 = new Giocatore(m2);
     }
     
-    public String contaPunti(){
+    public String calcolaVincitore(){
         if(g1.calcolaPunti() > g2.calcolaPunti()){
             return " il primo giocatore ha vinto";
         }
@@ -64,14 +64,7 @@ public class GestoreGioco {
     public void aggiungiCarta(Carta c){
         mazzo.addCard(c);
     }
-    
-    public ArrayList<Carta> carteMazzoCentrale(){
-        ArrayList<Carta> carte = new ArrayList();
-        carte.clear();
-        carte.addAll(mazzoCentrale.carte);
-        return carte;
-    }
-    
+ 
     //mi dice quando i 2 giocatori giocano la loro mano chi vince
     public void manoVincente() {
         Carta c1 = g1.giocaCarta();
@@ -81,7 +74,6 @@ public class GestoreGioco {
         mazzoCentrale.addCard(c2);
 
         Giocatore vincitore = null;
-
         if (c1.getColore() == Colore.Rosso && (c2.getColore() == Colore.Giallo || c2.getColore() == Colore.Verde))
             vincitore = g1;
         else if (c1.getColore() == Colore.Giallo && c2.getColore() == Colore.Verde)
@@ -110,14 +102,13 @@ public class GestoreGioco {
                    "\nCarte in mano: " + g2.mano +
                    "\n\nIl punteggio del giocatore 1 e': " + g1.punteggio.calcolaPunti() +
                    "\nIl punteggio del giocatore 2 e': " + g2.punteggio.calcolaPunti() +
-                   "\nIl vincitore della partita e': " + this.contaPunti();
+                   "\nIl vincitore della partita e': " + this.calcolaVincitore();
         }
         
     public void start(){
     this.daiMazzo();
     //gioca tutte le carte
         while(!g1.mano.carte.isEmpty() && !g2.mano.carte.isEmpty()){
-            
             this.manoVincente();
         }
     }

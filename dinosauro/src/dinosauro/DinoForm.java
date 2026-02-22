@@ -4,6 +4,11 @@
  */
 package dinosauro;
 
+import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aless
@@ -13,9 +18,57 @@ public class DinoForm extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DinoForm.class.getName());
     
     GestoreGioco g = new GestoreGioco();
+    ImageIcon[] giallo = new ImageIcon[2];
+    ImageIcon[] verde = new ImageIcon[2];
+    ImageIcon[] rosso = new ImageIcon[2];
+    ImageIcon x = null;
+    JLabel[] labelCarteG1 ;
+    JLabel[] labelCarteG2;
+    int i = 0;
+    String[] pathG1;
+    String[] pathG2;
+    int k = 0;
+    Carta c1;
+    Carta c2;
+
+    /*
+    per gestire la comparsa delle carte io faccio 1 ArrayList di carte, dove avro nelle
+    prime 2 posizioni carte verdi, nelle posizioni cetrali quelle gialle e enelle ultime 2 quelle rosse 
+    (come nel crisimimis)
+    le faccio apparire nelle label in base al colore e ne scelgo 1 randomica tra le due del colore uscito
+    poi in caso pareggiano i giocatori faccio capitare nel mazzo centrale l'ultima carta giocata
+    dal giocatore 2 (ovvero le carte in posizioni dispari)
+    
+    negli slot per le carte che si hanno in mano faccio la stessa cosa che faccio per le carte giocate
+    quindi le scelgo randomicamente e le faccio uscire in base al colore
+    
+    devo mettere una label dove segna il punteggio. Dopo ogni giocata si deve  aggiornare
+    
+    */
     
     public DinoForm() {
         initComponents();
+        labelCarteG1 = new JLabel[] { jLabel1, jLabel12, jLabel13, jLabel14, jLabel15, 
+                                      jLabel16, jLabel17, jLabel18, jLabel19, jLabel20, 
+                                      jLabel21, jLabel22, jLabel23, jLabel24, jLabel25 };
+
+        labelCarteG2 = new JLabel[] { jLabel3, jLabel26, jLabel27, jLabel28, jLabel29, 
+                                      jLabel30, jLabel31, jLabel32, jLabel33, jLabel34, 
+                                      jLabel35, jLabel36, jLabel37, jLabel38, jLabel39 };
+        
+        giallo[0] = new ImageIcon(getClass().getResource("/dinosauro/carteGialle/giallo1.png"));
+        giallo[1] = new ImageIcon(getClass().getResource("/dinosauro/carteGialle/giallo2.png"));
+        verde[0] = new ImageIcon(getClass().getResource("/dinosauro/carteVerdi/verde1.png"));
+        verde[1] = new ImageIcon(getClass().getResource("/dinosauro/carteVerdi/verde2.png"));
+        rosso[0] = new ImageIcon(getClass().getResource("/dinosauro/carteRosse/rosso1.png"));
+        rosso[1] = new ImageIcon(getClass().getResource("/dinosauro/carteRosse/rosso2.png"));
+        
+        
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        g.daiMazzo();
+        jLabel41.setText(g.g1.mano.toString());//deve scrivere sulla label 41 i colori delle carte di g1
+        jLabel42.setText(g.g2.mano.toString());
     }
 
     /**
@@ -27,52 +80,382 @@ public class DinoForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("CartaG1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 50, 60));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 50, 60));
 
-        jLabel3.setText("CartaG2");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 50, 60));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 50, 60));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("mano g1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 80, 40));
+        jLabel4.setText("mano g1:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 90, 40));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel5.setText("mano g2");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 80, 30));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("mano g2:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 90, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("mazzo scarti");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 80, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 80, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dinosauro/immagini/sfondo_dinoForm.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 550, 490));
-
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("gioca");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 70, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 140, 40));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("punti g2");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, 110, 40));
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 60, 50));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("punti g1");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 50, 50));
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 50, 60));
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 50, 60));
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 50, 60));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 50, 60));
+
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setToolTipText("");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 50, 50));
+
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 50, 50));
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 50, 50));
+
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 50, 50));
+
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 50, 50));
+
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 40, 50));
+
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 40, 50));
+
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 40, 50));
+
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 40, 50));
+
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 40, 50));
+
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 50, 60));
+
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 50, 60));
+
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 50, 60));
+
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 290, 50, 60));
+
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 50, 50));
+
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 50, 50));
+
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 50, 50));
+
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 50, 50));
+
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 50, 50));
+
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 40, 50));
+
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 40, 50));
+
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 40, 50));
+
+        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 40, 50));
+
+        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 180, 40, 50));
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setText("gioca carta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 140, 50));
+
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 60, 60));
+
+        jLabel41.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 440, 100));
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 400, 100));
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dinosauro/immagini/forse_sfondo_giusto.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 860, 490));
+
+        jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel43.setText("vincitore");
+        getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 60));
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton3.setText("fast match");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 140, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //devo solo dare le carte
+        
+        //label dove andranno le carte del g1 e del g2
+        pathG1 = new String[labelCarteG1.length];
+        pathG2 = new String[labelCarteG2.length];
+        //array delle immagini delle carte
+
+        
+       
+        
+        //getClass().getResource serve a serve per caricare file interni al progetto
+        //cerca il file dentro il progetto compilato
+        //restituisce un URL dell'immagine
+        //funziona anche quando il programma è esportato (JAR)
+        
+        
+        Mazzo m1 = g.g1.mano;
+        Mazzo m2 = g.g2.mano;
+        Random rdn = new Random();
+
+        for(int i = 0; i < labelCarteG1.length; i++){
+            int rand = rdn.nextInt(2);
+            
+            //giocatore 1
+            if(m1.carte.getFirst().getColore() == Colore.Rosso){
+                x = rosso[rand];
+                labelCarteG1[i].setIcon(x);
+            }
+            else if(m1.carte.getFirst().getColore() == Colore.Verde){
+                x = verde[rand];
+                labelCarteG1[i].setIcon(x);
+            }
+            else if(m1.carte.getFirst().getColore() == Colore.Giallo){
+                x = giallo[rand];
+                labelCarteG1[i].setIcon(x);
+            }
+            x = null;
+            //giocatore 2
+            if(m2.carte.getFirst().getColore() == Colore.Rosso){
+                x = rosso[rand];
+                labelCarteG2[i].setIcon(x);
+            }
+            else if(m2.carte.getFirst().getColore() == Colore.Verde){
+                x = verde[rand];
+                labelCarteG2[i].setIcon(x);
+            }
+            else if(m2.carte.getFirst().getColore() == Colore.Giallo){
+                x = giallo[rand];
+                labelCarteG2[i].setIcon(x);
+            }
+            pathG1[i] = String.valueOf(x.getImage().getSource());
+            pathG2[i] = String.valueOf(x.getImage().getSource());
+            m1.pescaPrimaCarta();
+            m2.pescaPrimaCarta();
+            x = null;
+        }
+        
+        jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
+        jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
+        
         //dovrei fare che ogni volta che premo gioca mi gioca una mano e così via fino a che non finisco
+        //quando clicclo gioca deve aggiornare le label dei punti di entrambi i giocatori
+        
+
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton1.setEnabled(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        g.daiMazzo();
+        
+        if (!g.g1.mano.carte.isEmpty() && !g.g2.mano.carte.isEmpty()) {
+            g.manoVincente();
+            jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
+            jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
+            
+            jLabel1.setIcon(labelCarteG1[0].getIcon());
+            jLabel3.setIcon(labelCarteG2[0].getIcon());
+            
+            
+            for (int j = 0; j < labelCarteG1.length - 1; j++) {
+                labelCarteG1[j].setIcon(labelCarteG1[j + 1].getIcon());
+                labelCarteG2[j].setIcon(labelCarteG2[j + 1].getIcon());
+            }
+
+            labelCarteG1[labelCarteG1.length - 1].setIcon(null);
+            labelCarteG2[labelCarteG2.length - 1].setIcon(null);
+
+            c1 = g.g1.mano.carte.get(0);
+            c2 = g.g2.mano.carte.get(0);
+
+            if(c1.getColore() == c2.getColore()){
+                jLabel40.setIcon(jLabel3.getIcon());
+            }
+            if (labelCarteG1[labelCarteG1.length - 1].getIcon() == null) {
+                jButton3.setEnabled(false);
+            }
+            jLabel43.setText(g.calcolaVincitore());
+        }
+        if(k == 14){
+                jButton2.setEnabled(false);
+                jLabel43.setText(g.calcolaVincitore());
+                JOptionPane.showMessageDialog(null, "fine del gioco :( ");
+            }
+        k++;
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        g.start();
+        while(!g.g1.mano.carte.isEmpty() && !g.g2.mano.carte.isEmpty()){
+            
+            g.manoVincente();
+        }
+    
+        jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
+        jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
+        jLabel43.setText(g.calcolaVincitore());
+        
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,11 +484,50 @@ public class DinoForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,7 +47,7 @@ public class Mazzo {
     public String toString(){
         String s = "";
     for(Carta a: carte){
-        s += a + " ";
+        s += a + "-";
     }
     return s;
     }
