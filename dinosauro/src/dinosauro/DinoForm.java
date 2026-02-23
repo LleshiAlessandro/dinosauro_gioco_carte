@@ -126,6 +126,7 @@ public class DinoForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jLabel9.setText("jLabel9");
 
@@ -328,6 +329,14 @@ public class DinoForm extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 140, 50));
 
+        jButton4.setText("istruzioni");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 140, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -457,6 +466,23 @@ public class DinoForm extends javax.swing.JFrame {
         jButton3.setEnabled(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JOptionPane.showMessageDialog(null, "Il gioco di carte dei dinosauri è una sfida strategica tra due giocatori basata su tre colori: " + "\n" +
+                "rosso, verde e giallo. Ogni colore ha una forza diversa: il rosso è il più potente e batte sia il verde che il giallo;" + "\n" +
+                "il verde batte il giallo ma perde contro il rosso; il giallo è il più debole e può soltanto pareggiare contro un’altra carta gialla." + "\n" +
+                "Ogni giocatore possiede una propria mano di carte e un mazzo dei punti, dove vengono raccolte le carte vinte durante la partita." + "\n" +
+                "I giocatori scelgono e giocano le carte dalla propria mano per sfidare l’avversario, cercando di ottenere il maggior numero di punti possibile." + "\n" +
+                "Per iniziare la partita si utilizza il pulsante “Gioca”. Il pulsante “Gioca Carta” permette invece di giocare una carta singolarmente." + "\n" + 
+                "È presente anche una modalità “Fast Match”, in cui l’intera partita viene giocata automaticamente e alla fine vengono mostrati solamente i risultati con il vincitore." +"\n" +
+                "Nella schermata di gioco, in basso, sono visibili le mani di entrambi i giocatori, così da poter seguire l’andamento della sfida." +"\n" +
+                "Vince chi, al termine della partita, ha accumulato più punti nel proprio mazzo." + "\n"+
+                "Buona partita giocatore");
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -486,6 +512,7 @@ public class DinoForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
