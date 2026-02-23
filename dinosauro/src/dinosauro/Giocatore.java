@@ -15,8 +15,7 @@ public class Giocatore {
     protected Mazzo punteggio = new Mazzo(new ArrayList());
 
     
-    //m1 e m2 sono i 2 mazzi che passo quando costuisco il giocatore ovvero il numero di carte che ha in mano
-    //e il punteggio che all'inizio saranno 0 
+    
     public Giocatore(Mazzo m1) {
         mano = m1;
     }
@@ -24,13 +23,17 @@ public class Giocatore {
     public void pescaCarta(Carta c){
         mano.addCard(c);        
     }
-    
+    /**
+     * richiama il metodo calcolaPunti sul mazzo punteggio, quidi calcola il punteggio delle carte vinte dal giocatore
+     */
     public int calcolaPunti(){
         return punteggio.calcolaPunti();
     }
-    
+    /**
+     * richiama il metodo pescaPrimaCarta sul mazzo dov'è contenuta la mano
+     * @return returna la prima carta di mano
+     */
     public Carta giocaCarta(){
-        
         return mano.pescaPrimaCarta();
     }
     @Override

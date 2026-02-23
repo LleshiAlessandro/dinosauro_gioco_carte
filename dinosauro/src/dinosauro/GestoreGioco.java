@@ -23,6 +23,9 @@ public class GestoreGioco {
         g2.giocaCarta();
     }
     
+    /**
+     * il dai mazzo prende il mazzo composto da 30 carte e lo divide tra i due giocatori
+     */
     public void daiMazzo(){
         int x=0;
         Mazzo m1;
@@ -45,7 +48,10 @@ public class GestoreGioco {
         g1 = new Giocatore(m1);
         g2 = new Giocatore(m2);
     }
-    
+    /**
+     * 
+     * @return mi ritorna i'esito finale della partita
+     */
     public String calcolaVincitore(){
         if(g1.calcolaPunti() > g2.calcolaPunti()){
             return " il primo giocatore ha vinto";
@@ -65,7 +71,9 @@ public class GestoreGioco {
         mazzo.addCard(c);
     }
  
-    //mi dice quando i 2 giocatori giocano la loro mano chi vince
+    /**
+     * mi serve a capire quale dei due giocatori ha vinto la giocata, per giocata si intende quando ogni giocatore gioca la sua carta e viene controllato quale carta prevale sull'altra
+     */
     public void manoVincente() {
         Carta c1 = g1.giocaCarta();
         Carta c2 = g2.giocaCarta();
@@ -104,7 +112,9 @@ public class GestoreGioco {
                    "\nIl punteggio del giocatore 2 e': " + g2.punteggio.calcolaPunti() +
                    "\nIl vincitore della partita e': " + this.calcolaVincitore();
         }
-        
+    /**
+     * fa partire tutto il programma e lo manda in output su console
+     */
     public void start(){
     this.daiMazzo();
     //gioca tutte le carte

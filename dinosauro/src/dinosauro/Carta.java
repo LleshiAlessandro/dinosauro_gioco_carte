@@ -11,7 +11,10 @@ package dinosauro;
 public class Carta {
     private int punteggio;
     private Colore colore;
-
+    /**
+     * costruico la carta in base al colore e in base a che colore ha gli attribuisco il suo punteggio
+     * @param c gli passo un colore in string che poi parso in Colore
+     */
     public Carta(String c) {
         if(c.equals("Rosso")){
             punteggio = 5;
