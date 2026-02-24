@@ -30,21 +30,6 @@ public class DinoForm extends javax.swing.JFrame {
     int k = 0;
     Carta c1;
     Carta c2;
-
-    /*
-    per gestire la comparsa delle carte io faccio 1 ArrayList di carte, dove avro nelle
-    prime 2 posizioni carte verdi, nelle posizioni cetrali quelle gialle e enelle ultime 2 quelle rosse 
-    (come nel crisimimis)
-    le faccio apparire nelle label in base al colore e ne scelgo 1 randomica tra le due del colore uscito
-    poi in caso pareggiano i giocatori faccio capitare nel mazzo centrale l'ultima carta giocata
-    dal giocatore 2 (ovvero le carte in posizioni dispari)
-    
-    negli slot per le carte che si hanno in mano faccio la stessa cosa che faccio per le carte giocate
-    quindi le scelgo randomicamente e le faccio uscire in base al colore
-    
-    devo mettere una label dove segna il punteggio. Dopo ogni giocata si deve  aggiornare
-    
-    */
     
     public DinoForm() {
         initComponents();
@@ -88,9 +73,7 @@ public class DinoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -166,18 +149,10 @@ public class DinoForm extends javax.swing.JFrame {
         jLabel7.setText("punti g2");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, 110, 40));
 
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 60, 50));
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("punti g1");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
-
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 50, 50));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -515,8 +490,6 @@ public class DinoForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

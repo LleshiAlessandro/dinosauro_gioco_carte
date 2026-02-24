@@ -27,6 +27,7 @@ public class GestoreGioco {
      * il dai mazzo prende il mazzo composto da 30 carte e lo divide tra i due giocatori
      */
     public void daiMazzo(){
+        mazzo.mischia();
         int x=0;
         Mazzo m1;
         Mazzo m2;

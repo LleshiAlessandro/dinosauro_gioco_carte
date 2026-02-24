@@ -5,6 +5,7 @@
 package dinosauro;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -60,6 +61,9 @@ public class Mazzo {
         Carta c = carte.get(0);
         carte.remove(c);
         return c;
+    }
+    public void mischia(){
+        Collections.shuffle(carte);
     }
     @Override
     public String toString(){
