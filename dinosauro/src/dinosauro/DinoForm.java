@@ -408,15 +408,16 @@ public class DinoForm extends javax.swing.JFrame {
         jButton2.setEnabled(true);
         jButton3.setEnabled(true);
         jButton1.setEnabled(false);
-        
+        g.daiMazzo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        g.daiMazzo();
+        
         
         if (!g.g1.mano.carte.isEmpty() && !g.g2.mano.carte.isEmpty()) {
-            g.manoVincente();
+            
+            
             jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
             jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
             
@@ -431,24 +432,24 @@ public class DinoForm extends javax.swing.JFrame {
 
             labelCarteG1[labelCarteG1.length - 1].setIcon(null);
             labelCarteG2[labelCarteG2.length - 1].setIcon(null);
-
+            
+            
             c1 = g.g1.mano.carte.get(0);
             c2 = g.g2.mano.carte.get(0);
-
+            g.manoVincente();
             if(c1.getColore() == c2.getColore()){
                 jLabel40.setIcon(jLabel3.getIcon());
             }
             if (labelCarteG1[labelCarteG1.length - 1].getIcon() == null) {
                 jButton3.setEnabled(false);
             }
-            jLabel43.setText(g.calcolaVincitore());
         }
-        if(k == 14){
+        else {
                 jButton2.setEnabled(false);
                 jLabel43.setText(g.calcolaVincitore());
                 JOptionPane.showMessageDialog(null, "fine del gioco :( ");
             }
-        k++;
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
