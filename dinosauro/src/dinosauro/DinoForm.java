@@ -433,7 +433,12 @@ public class DinoForm extends javax.swing.JFrame {
             
             g.manoVincente();
         }
-    
+        for(JLabel l: labelCarteG1){
+            l.setVisible(false);
+        }
+        for(JLabel l: labelCarteG2){
+            l.setVisible(false);
+        }
         jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
         jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
         jLabel43.setText(g.calcolaVincitore());
