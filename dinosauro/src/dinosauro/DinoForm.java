@@ -422,7 +422,7 @@ public class DinoForm extends javax.swing.JFrame {
         else {
                 jButton2.setEnabled(false);
                 jLabel43.setText(g.calcolaVincitore());
-                JOptionPane.showMessageDialog(null, "fine del gioco :( ");
+                JOptionPane.showMessageDialog(null, "fine del gioco :( " +"\n" + g.calcolaVincitore());
             }
        
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -442,6 +442,7 @@ public class DinoForm extends javax.swing.JFrame {
         jLabel8.setText(String.valueOf(g.g1.punteggio.calcolaPunti()));
         jLabel7.setText(String.valueOf(g.g2.punteggio.calcolaPunti()));
         jLabel43.setText(g.calcolaVincitore());
+        JOptionPane.showMessageDialog(null, "fine del gioco :( " +"\n" + g.calcolaVincitore());
         
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
